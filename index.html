@@ -13,10 +13,18 @@
     <script type="text/babel">
       //inizio la creazione della componente 
       const { useState } = React;
+      //creo un array di stringhe animals
+      const animals = ["Cane", "Gatto", "Elefante", "Leone", "Pinguino"];
 
      const Animal = () =>{
+      //creo un map per inserire nella summary l'array di stringhe creato precedentemente 
       return(
-        <h1>first element</h1>
+        <details>
+          <summary>Animali</summary>
+          {animals.map(a =>{
+            return (<ul>{a}</ul>)
+          })}
+          </details>
       );
      }
 //creo  il componente da passare nella root per renderizzarlo in HTML
