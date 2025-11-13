@@ -10,21 +10,23 @@
         <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
         <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
         <!--per prima cosa installo le cdn -->
-    
-    
     <script type="text/babel">
       //inizio la creazione della componente 
       const { useState } = React;
 
      const Animal = () =>{
-
-
       return(
         <h1>first element</h1>
       );
-
-
      }
+//creo  il componente da passare nella root per renderizzarlo in HTML
+      const { createRoot } = ReactDOM;
+
+      const listaAnimali = document.querySelector(".lista-animali")
+
+      const root = createRoot(listaAnimali)
+      // passo alla root la componente react che ho creato 
+      root.render(<Animal/>)
 
     </script>
 </head>
