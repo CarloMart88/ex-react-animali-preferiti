@@ -44,12 +44,18 @@
       const [animals , setAnimals] = useState([]);
       // creo un nuovo state che inizialmente è false da passare alla modale 
       const [show ,  setShow] = useState(false)
+
+      const [animalName ,  setAnimalName] = useState("")
      //creo la funzione aggiungi animale per vedere un animale nella ul 
      //let i = Math.floor(Math.random() * a.length); per prendere un elemento random da un array
-      const aggiungiAnimale = () => {
-            const randomIndex = Math.floor(Math.random()* animalsChoices.length)
-            const randomAnimal = animalsChoices[randomIndex]
-            setAnimals(curr => [...curr , randomAnimal])
+      const addAnimal = () => {
+        //dobbiamo chiederci se animalName è vuoto
+        if(!animalName) return;
+        setAnimals(curr =>[...curr , animalName])
+        //svuoto animalName
+        setAnimalName("")
+        //setShow ritorna false
+        setShow(false)
 
          }
      
@@ -72,6 +78,15 @@
             <Modal
             show={show}
             onClose={ () => setShow(false) }
+            onConfirm={addAnimal}
+            title="aggiungi animale"
+            content={
+                <input
+                  type="text"
+                  value={animalName}
+                  onChange={e => setAnimalName(e.target.value)}
+                />
+            }
             
             />
             </>
