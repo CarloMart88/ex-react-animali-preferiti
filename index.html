@@ -42,8 +42,8 @@
       //creo un map per inserire nella summary l'array di stringhe creato precedentemente 
       const Animal = () =>{ 
       const [animals , setAnimals] = useState([]);
-      // ho bisogno dell'indice per la funzione 
-      const [index ,  setIndex] = useState(0)
+      // creo un nuovo state che inizialmente è false da passare alla modale 
+      const [show ,  setShow] = useState(false)
      //creo la funzione aggiungi animale per vedere un animale nella ul 
      //let i = Math.floor(Math.random() * a.length); per prendere un elemento random da un array
       const aggiungiAnimale = () => {
@@ -59,8 +59,8 @@
          <>
           <h3>clicca il bottone per aggiungere un animale!</h3>
           <button
-          onClick={aggiungiAnimale}
-          >clicca qui</button>
+          //cambio adesso la funzione del bottone che al click cambia lo stato di show in true per aprire la modale 
+          onClick={() => setShow(true)}>clicca qui</button>
           <details>
             <summary>Animali</summary>
             <ul>ecco la lista degli animali
@@ -70,7 +70,8 @@
             </details>
           {/*aggiungo per comodità la modale a piè componente*/}
             <Modal
-            
+            show={show}
+            onClose={ () => setShow(false) }
             
             />
             </>
