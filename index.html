@@ -25,8 +25,9 @@
      //creo la funzione aggiungi animale per vedere un animale nella ul 
      //let i = Math.floor(Math.random() * a.length); per prendere un elemento random da un array
       const aggiungiAnimale = () => {
-          const randomAnimal = animalsChoices[Math.floor(Math.random() * animalsChoices.length)];
-          setAnimals([...animals, randomAnimal])
+            const randomIndex = Math.floor(Math.random()* animalsChoices.length)
+            const randomAnimal = animalsChoices[randomIndex]
+            setAnimals(curr => [...curr , randomAnimal])
          }
      
       return(
@@ -39,10 +40,10 @@
           >clicca qui</button>
           <details>
             <summary>Animali</summary>
-            <ul>ecco la lista degli animali</ul>
+            <ul>ecco la lista degli animali
             {animals.map((a , index) =>{
               return (<li key={index}>{a}</li>)
-            })}
+            })}</ul>
             </details>
             </>
            
