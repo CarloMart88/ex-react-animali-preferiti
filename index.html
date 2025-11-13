@@ -22,13 +22,13 @@
       const [animals , setAnimals] = useState([]);
       // ho bisogno dell'indice per la funzione 
       const [index ,  setIndex] = useState(0)
-     //creo la funzione aggiungi animale 
+     //creo la funzione aggiungi animale per vedere un animale nella ul 
+     //let i = Math.floor(Math.random() * a.length); per prendere un elemento random da un array
       const aggiungiAnimale = () => {
-         if(index < animalsChoices.length){
-          setAnimals([...animals, animalsChoices[index]])
-          setIndex(index + 1)
+          const randomAnimal = animalsChoices[Math.floor(Math.random() * animalsChoices.length)];
+          setAnimals([...animals, randomAnimal])
          }
-      }
+     
       return(
         /*Aggiungi un bottone "Aggiungi Animale" sopra il <details>.
             Cliccando il bottone, un animale casuale viene aggiunto alla lista.*/
