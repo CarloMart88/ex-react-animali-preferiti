@@ -12,22 +12,40 @@
         <!--per prima cosa installo le cdn -->
     <script type="text/babel">
       //inizio la creazione della componente 
-      const { useState } = React;
+      
       //Usa un array predefinito per scegliere casualmente:
-      const animalsChoices = ["Cane", "Gatto", "Pappagallo", "Cavallo", "Panda"];
       // ho cambiato animals trasformando in una variabile dinamica la logica sarebbe che al click del pulsante si aggiunge un nuovo elemento all'array vuoto
-      const [animals , setAnimals] = useState([]);
-
-     const Animal = () =>{
+      const animalsChoices = ["Cane", "Gatto", "Pappagallo", "Cavallo", "Panda"];
+      const { useState } = React;
       //creo un map per inserire nella summary l'array di stringhe creato precedentemente 
+      const Animal = () =>{ 
+      const [animals , setAnimals] = useState([]);
+      // ho bisogno dell'indice per la funzione 
+      const [index ,  setIndex] = useState(0)
+     //creo la funzione aggiungi animale 
+      const aggiungiAnimale = () => {
+         if(index < animalsChoices.length){
+          setAnimals([...animals, animalsChoices[index]])
+          setIndex(index + 1)
+         }
+      }
       return(
-        <details>
-          <summary>Animali</summary>
-          <ul>ecco la lista degli animali</ul>
-          {animals.map(a =>{
-            return (<li>{a}</li>)
-          })}
-          </details>
+        /*Aggiungi un bottone "Aggiungi Animale" sopra il <details>.
+            Cliccando il bottone, un animale casuale viene aggiunto alla lista.*/
+         <>
+          <h3>clicca il bottone per aggiungere un animale!</h3>
+          <button
+          onClick={aggiungiAnimale}
+          >clicca qui</button>
+          <details>
+            <summary>Animali</summary>
+            <ul>ecco la lista degli animali</ul>
+            {animals.map((a , index) =>{
+              return (<li key={index}>{a}</li>)
+            })}
+            </details>
+            </>
+           
       );
      }
 //creo  il componente da passare nella root per renderizzarlo in HTML
@@ -57,13 +75,6 @@
   </body>
 </html>
 
-<!--📌 Milestone 1: Inserire un Componente React
-Monta un componente React all’interno dell’elemento con classe .lista-animali.
 
-Il componente deve includere:
-Un elemento <details> con titolo "Animali", che contiene:
-Una lista <ul> statica che viene creata a partire da un array di stringhe (animals) dove ciascuna stringa rappresenta il nome di un animale.
-
-Obiettivo: Mostrare la struttura base della lista di animali con un <details> che può essere espanso o contratto.-->
 
 
