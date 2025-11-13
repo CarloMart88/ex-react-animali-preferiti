@@ -13,14 +13,17 @@
     <script type="text/babel">
       //inizio la creazione della componente 
       const { useState } = React;
-      //creo un array di stringhe animals
-      const animals = ["Cane", "Gatto", "Elefante", "Leone", "Pinguino"];
+      //Usa un array predefinito per scegliere casualmente:
+      const animalsChoices = ["Cane", "Gatto", "Pappagallo", "Cavallo", "Panda"];
+      // ho cambiato animals trasformando in una variabile dinamica la logica sarebbe che al click del pulsante si aggiunge un nuovo elemento all'array vuoto
+      const [animals , setAnimals] = useState([]);
 
      const Animal = () =>{
       //creo un map per inserire nella summary l'array di stringhe creato precedentemente 
       return(
         <details>
           <summary>Animali</summary>
+          <ul>ecco la lista degli animali</ul>
           {animals.map(a =>{
             return (<li>{a}</li>)
           })}
@@ -62,3 +65,5 @@ Un elemento <details> con titolo "Animali", che contiene:
 Una lista <ul> statica che viene creata a partire da un array di stringhe (animals) dove ciascuna stringa rappresenta il nome di un animale.
 
 Obiettivo: Mostrare la struttura base della lista di animali con un <details> che può essere espanso o contratto.-->
+
+
