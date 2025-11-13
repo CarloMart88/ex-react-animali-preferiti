@@ -11,6 +11,24 @@
         <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
         <!--per prima cosa installo le cdn -->
     <script type="text/babel">
+
+     function Modal({
+      title, 
+      content, 
+      show = false, 
+      onClose = () => {}
+      }){
+      return show && ReactDOM.createPortal(
+          <div className="modal-container">
+              <div className="modal">
+                  <h2>{title}</h2>
+                  <p>{content}</p>
+                  <button onClick={onClose}>Annulla</button>
+              </div>
+          </div>,
+          document.body
+        )
+      }
       //inizio la creazione della componente 
       
       //Usa un array predefinito per scegliere casualmente:
